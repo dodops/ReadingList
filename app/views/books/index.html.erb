@@ -18,9 +18,9 @@
         <% @books.each do |book| %>
           <li class="row rating-<%= book.rating %>">
           <div class="col-sm-3">
-<!--             <a href="#" target="_blank">
-              
-            </a> -->
+            <a href="#" target="_blank">
+              <%= image_from_amazon(book.amazon_id) %>
+            </a>
             <p class="text-center rating"><strong><%= book.rating %></strong>/5</p>
           </div>
 
