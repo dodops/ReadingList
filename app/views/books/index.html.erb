@@ -11,12 +11,11 @@
   <div class='row'>
     <div class='col-sm-12'>
       <p>
-        <form>
-          <legend>Search</legend>
-          <div class='col-xs-4'>
-            <input type='text' class='form-control' value='<%= params[:keyword] %>' name='keyword' placeholder='Keyword' >
-          </div>
-        </form>
+        <%= form_tag(search_books_path, method: :get) do %>
+          <%= text_field_tag :keyword %>
+          <%= submit_tag "Search", name: nil %>
+        <% end %>
+
       </p>
       <p class='pull-right'>
         <a href='#' id='show-form' class='btn btn-primary'>New Book Form</a>
@@ -91,11 +90,13 @@
     <div class="col-sm-4">
       <h2>Genres</h2>
       <ul class="list-unstyled">
-        <% @genres.each do |genre| %>
-          <li>
-            <%= link_to genre.name, books_path(filter: genre.name),
-              class: 'label label-primary' %>
-          </li>
+        <% cache do %>
+          <% Genre.all.each do |genre| %>
+            <li>
+              <%= link_to genre.name, books_path(filter: genre.name),
+                class: 'label label-primary' %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </div>

@@ -5,11 +5,15 @@ class BooksController < ApplicationController
     @genres = Genre.all
     if params[:genre]
       @books = Book.genre_filter(params[:genre])
-    elsif params[:keyword]
-      @books = Book.search(params[:keyword])
     else
-      @books = Book.all
+      @books = Book.all 
     end
+  end
+
+  def search
+    @genres = Genre.all
+    @books = Book.search(params[:keyword])
+    render 'index'
   end
 
   def show

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :books 
-  get 'genres/:genre', to: 'books#index', as: :genre
+  resources :books do
+    collection do
+      get 'search'
+    end
+  end
+  get ':genre', to: 'books#index', as: :genre
   root to: 'books#index'
 
 end

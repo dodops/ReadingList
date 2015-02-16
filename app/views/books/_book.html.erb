@@ -17,10 +17,13 @@
       </p>
     </div>
   <span>
+  <% cache do %>
     <% book.genres.each do |genre| %>
 
       <%= link_to genre.name, genre_path(genre), class: 'label label-primary' %>
 
     <% end %>
+  <% end %>
+
   </span>
 </li>
