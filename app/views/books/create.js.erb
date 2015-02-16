@@ -1,0 +1,3 @@
+$('#new_book').trigger('reset');
+$('.book-form').slideUp();
+$('.book-list').prepend("<%= escape_javascript(render(@book)) %>");
