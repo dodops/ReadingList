@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 
   def search
     @genres = Genre.all
-    @books = Book.search(params[:keyword])
+    @books = Book.search(params[:search][:keyword])
     render 'index'
   end
 
