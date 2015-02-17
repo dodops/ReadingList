@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ReadingList</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Reading List" %></title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -14,8 +14,53 @@
       </div>
     <% end %>
     </div>
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class='nav nav-pills pull-right'>
+          <% if current_user %>
+            <li><%= link_to "LogOut", destroy_user_session_path, method: :delete %></li>
+            <li>Logged as: <%= current_user.email %></li>
+          <% else %>
+            <li><%= link_to "SignUp", new_user_registration_path %></li>
+            <li><%= link_to "SingIn", new_user_session_path %></li>
+          <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
-    <%= yield %>
+    <div class="container">
+      <h1>Reading List</h1>
+
+      <ol class="breadcrumb">
+        <li class="active">
+          Books
+        </li>
+      </ol>
+
+      <div class='row'>
+        <div class='col-sm-12'>
+          <p>
+          <%= simple_form_for :search, { url: search_books_path, method: :get, html: {class: "form-inline" }} do |f| %>
+            <%= f.input :keyword, required: false, label: false %>
+            <%= f.button :submit, "Search", name: nil %>
+          <% end %>
+          </p>
+          <% if current_user %>
+            <p class='pull-right'>
+              <a href='#' id='show-form' class='btn btn-primary'>New Book Form</a>
+            </p>
+          <% end %>
+        </div>
+      </div>
+
+
+      <hr>
+
+      <%= yield %>
+
+    </div>
 
   </body>
 </html>
