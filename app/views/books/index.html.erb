@@ -1,42 +1,8 @@
-<div class="container">
-
-  <h1>Reading List</h1>
-
-  <ol class="breadcrumb">
-    <li class="active">
-      Books
-    </li>
-  </ol>
-
-  <div class='row'>
-    <div class='col-sm-12'>
-      <p>
-        <%= simple_form_for :search, { url: search_books_path, method: :get, html: {class: "form-inline" }} do |f| %>
-          <%= f.input :keyword, required: false, label: false %>
-          <%= f.button :submit, "Search", name: nil %>
-        <% end %>
-
-      </p>
-      <p class='pull-right'>
-        <a href='#' id='show-form' class='btn btn-primary'>New Book Form</a>
-      </p>
-    </div>
-  </div>
-
-  <hr>
-
 
   <div class='col-sm-12 book-form'>
     <p>
     <div class="col-sm-5"
-      <%= simple_form_for(Book.new, remote: true, html: { class: 'horizontal-form' }) do |f| %>
-        <%= f.input :title, placeholder: "Title" %>
-        <%= f.input :author, placeholder: "Author" %>
-        <%= f.input :description, placeholder: "Description" %>
-        <br>
-        <%= f.input :rating, as: :radio_buttons, collection: [1,2,3,4,5], item_wrapper_class: 'radio-inline' %>
-        <%= f.button :submit, class: 'btn btn-primary' %>
-      <% end %>
+      <%= render 'form' %>
     </div>
     </p>
   </div>
@@ -46,9 +12,7 @@
       <br>
       <br>
       <ul class="list-unstyled book-list">
-
         <%= render @books %>
-
       </ul>
     </div>
     <div class="col-sm-4">
@@ -65,4 +29,4 @@
       </ul>
     </div>
   </div>
-</div>
+

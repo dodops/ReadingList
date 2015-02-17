@@ -1,33 +1,8 @@
-<%= form_for(@book) do |f| %>
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-
-      <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :amazon_id %><br>
-    <%= f.text_field :amazon_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for(Book.new, remote: true, html: { class: 'horizontal-form' }) do |f| %>
+  <%= f.input :title, placeholder: "Title" %>
+  <%= f.input :author, placeholder: "Author" %>
+  <%= f.input :description, placeholder: "Description" %>
+  <br>
+  <%= f.input :rating, as: :radio_buttons, collection: [1,2,3,4,5], item_wrapper_class: 'radio-inline' %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
