@@ -49,4 +49,5 @@ group :development, :test do
 end
 gem 'devise'
 gem 'simple_form'
+gem 'shoulda-matchers', require: false, group: :test
 

@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Genre, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to have_many :books }
+  it { is_expected.to have_many :book_genres }
 end
