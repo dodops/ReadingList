@@ -1,8 +1,7 @@
-<%= simple_form_for(Book.new, remote: true, html: { class: 'horizontal-form' }) do |f| %>
+<%= simple_form_for Book.new, html: { class: 'horizontal-form' }, remote: true do |f| %>
   <%= f.input :title, placeholder: "Title" %>
   <%= f.input :author, placeholder: "Author" %>
-  <%= f.input :description, placeholder: "Description" %>
-  <br>
-  <%= f.input :rating, as: :radio_buttons, collection: [1,2,3,4,5], item_wrapper_class: 'radio-inline' %>
+  <%= f.input :description, placeholder: "Description" %><br>
+  <%= f.input :rating, as: :radio_buttons, collection: [1,2,3,4,5], item_wrapper_class: 'radio-inline' %><br>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

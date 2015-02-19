@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    member do
+      post 'subscribe'
+      delete 'unsubscribe'
+    end
   end
   get ':genre', to: 'books#index', as: :genre
   root to: 'books#index'

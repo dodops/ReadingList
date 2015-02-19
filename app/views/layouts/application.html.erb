@@ -8,13 +8,6 @@
   </head>
   <body>
     <div class="container">
-    <% flash.each do |name, msg| %>
-      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-        <%= msg %>
-      </div>
-    <% end %>
-    </div>
-    <div class="container">
       <div class="header">
         <nav>
           <ul class='nav nav-pills pull-right'>
@@ -47,16 +40,21 @@
             <%= f.button :submit, "Search", name: nil %>
           <% end %>
           </p>
-          <% if current_user %>
-            <p class='pull-right'>
-              <a href='#' id='show-form' class='btn btn-primary'>New Book Form</a>
-            </p>
-          <% end %>
         </div>
       </div>
 
 
       <hr>
+
+      <div class="container">
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <%= msg %>
+        </div>
+      <% end %>
+
+
+    </div>
 
       <%= yield %>
 

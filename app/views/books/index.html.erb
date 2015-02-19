@@ -1,7 +1,12 @@
+  <% if current_user %>
+    <p class='pull-right'>
+      <a href='#' id='show-form' class='btn btn-primary'>New Book Form</a>
+    </p>
+  <% end %>
 
   <div class='col-sm-12 book-form'>
     <p>
-    <div class="col-sm-5"
+    <div class="col-sm-5">
       <%= render 'form' %>
     </div>
     </p>

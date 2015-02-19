@@ -1,9 +1,10 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show, :search]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :subscribe, :unsubscribe]
+  before_action :authenticate_user!, except: [:index, :search]
+
+  
 
   def index
-    @genres = Genre.all
     if params[:genre]
       @books = Book.genre_filter(params[:genre])
     else
@@ -15,6 +16,20 @@ class BooksController < ApplicationController
     @genres = Genre.all
     @books = Book.search(params[:search][:keyword])
     render 'index'
+  end
+
+  def subscribe
+    current_user.subscribe(@book)
+    respond_to do |f|
+      f.js
+    end
+  end
+
+  def unsubscribe
+    current_user.unsubscribe(@book)
+    respond_to do |f|
+      f.js
+    end
   end
 
   def show
@@ -29,6 +44,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @boo
 
     respond_to do |format|
       if @book.save
