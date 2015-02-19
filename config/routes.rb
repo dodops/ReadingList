@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :books do
     collection do
       get 'search'
+      get 'user_list'
     end
     member do
       post 'subscribe'

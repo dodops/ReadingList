@@ -2,8 +2,6 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :subscribe, :unsubscribe]
   before_action :authenticate_user!, except: [:index, :search]
 
-  
-
   def index
     if params[:genre]
       @books = Book.genre_filter(params[:genre])
@@ -13,8 +11,12 @@ class BooksController < ApplicationController
   end
 
   def search
-    @genres = Genre.all
     @books = Book.search(params[:search][:keyword])
+    render 'index'
+  end
+
+  def user_list
+    @books = current_user.books
     render 'index'
   end
 

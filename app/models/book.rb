@@ -3,7 +3,6 @@ class Book < ActiveRecord::Base
   has_many :genres, :through => :book_genres
   has_many :subscriptions
   has_many :users, :through => :subscriptions
-
   scope :finished, -> { where.not(finished_on: nil) }
   scope :genre_filter, ->(genre_id) { joins(:genres).where('genres.id = ?', genre_id) }
   scope :search, ->(keyword){ where('keywords LIKE ?', "%#{I18n.transliterate(keyword.downcase)}%") if keyword.present? }
@@ -16,8 +15,6 @@ class Book < ActiveRecord::Base
   def finished?
     finished_on.present?
   end
-
-  
 
   protected
 
