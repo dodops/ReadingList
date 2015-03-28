@@ -17,7 +17,8 @@ class BooksController < ApplicationController
 
   def user_list
     @books = current_user.books
-    render 'index'
+    @redead_books = @books.finished
+    @unread = @books.unfinished
   end
 
   def subscribe

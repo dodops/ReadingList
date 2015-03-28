@@ -13,6 +13,8 @@
           <ul class='nav nav-pills pull-right'>
           <% if current_user %>
             <li><%= link_to "LogOut", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "My bookList", user_list_books_path %></li>
+            <br>
             <li>Logged as: <%= current_user.email %></li>
           <% else %>
             <li><%= link_to "SignUp", new_user_registration_path %></li>
@@ -28,7 +30,7 @@
 
       <ol class="breadcrumb">
         <li class="active">
-          Books
+          <%= link_to "Books", root_path %>
         </li>
       </ol>
 

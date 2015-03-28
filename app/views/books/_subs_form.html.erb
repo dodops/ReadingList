@@ -1,11 +1,11 @@
 <div id="subs_form">
   <% if current_user.subscribed?(@book) %>
     <%= simple_form_for current_user.subscriptions.find_by(book_id: @book.id), url: unsubscribe_book_path, method: :delete, remote: true do |f| %>
-      <%= f.button :submit, "Remove book of my list", class: "btn btn-alert" %>
+      <%= f.button :submit, "Remove book of my list", class: "btn btn-danger", id: "pica" %>
     <% end %>
   <% else %>
     <%= simple_form_for current_user.subscriptions.build(book: @book), url: subscribe_book_path, method: :post, remote: true do |f| %>
-      <%= f.button :submit, "Add book to my list", class: "btn btn-success" %>
+      <%= f.button :submit, "Add book to my list", class: "btn btn-success", id: "pica" %>
     <% end %>
   <% end %>
 </div>

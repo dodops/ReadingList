@@ -12,6 +12,8 @@ ready = ->
 
 $ ->
   ready(ready)
-
   
+$ ->
+  $("#myTab a:last").tab('show')
+
 $(document).on 'page:load', ready
