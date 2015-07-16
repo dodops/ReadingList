@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 gem 'puma'
@@ -50,4 +50,3 @@ end
 gem 'devise'
 gem 'simple_form'
 gem 'shoulda-matchers', require: false, group: :test
-
