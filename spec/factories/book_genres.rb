@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :book_genre do
-    book nil
-genre nil
+    book
+    genre
   end
-
 end
