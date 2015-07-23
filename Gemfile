@@ -50,3 +50,4 @@ end
 gem 'devise'
 gem 'simple_form'
 gem 'shoulda-matchers', require: false, group: :test
+gem 'omniauth-facebook'
