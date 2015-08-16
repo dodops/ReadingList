@@ -1,12 +1,13 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :subscribe, :unsubscribe]
   before_action :authenticate_user!, except: [:index, :search]
+  respond_to :html, :json
 
   def index
     if params[:genre]
       @books = Book.genre_filter(params[:genre])
     else
-      @books = Book.all 
+      @books = Book.all
     end
   end
 

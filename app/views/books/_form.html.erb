@@ -4,4 +4,5 @@
   <%= f.input :description, placeholder: "Description" %><br>
   <%= f.input :rating, as: :radio_buttons, collection: [1,2,3,4,5], item_wrapper_class: 'radio-inline' %><br>
   <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= f.association :genres, as: :check_boxes, collection: Genre.all %>
 <% end %>
