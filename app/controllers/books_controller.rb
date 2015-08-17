@@ -24,16 +24,12 @@ class BooksController < ApplicationController
 
   def subscribe
     current_user.subscribe(@book)
-    respond_to do |f|
-      f.js
-    end
+    respond_to { |f| f.js }
   end
 
   def unsubscribe
     current_user.unsubscribe(@book)
-    respond_to do |f|
-      f.js
-    end
+    respond_to { |f| f.js }
   end
 
   def show
