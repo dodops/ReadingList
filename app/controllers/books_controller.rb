@@ -4,11 +4,12 @@ class BooksController < ApplicationController
   respond_to :html, :json
 
   def index
-    if params[:genre]
-      @books = Book.genre_filter(params[:genre])
-    else
-      @books = Book.all
-    end
+    @books =
+      if params[:genre]
+        Book.genre_filter(params[:genre])
+      else
+        Book.includes(:genres).all
+      end
   end
 
   def search
