@@ -1,9 +1,6 @@
-<% cache book do %>
 <li class="row">
   <div class="col-sm-3">
-    <a href="#" target="_blank">
-      <%= image_from_amazon(book.amazon_id) %>
-    </a>
+    <%= image_from_amazon(book.amazon_id) %>
     <p class="text-center rating"><strong><%= book.rating %></strong>/5</p>
   </div>
 
@@ -12,19 +9,15 @@
     <p class="text-muted"><em>Written by <%= book.author %></em></p>
 
     <div>
-      <p>
-        <%= book.description %>
-      </p>z
+      <p><%= book.description %></p>
     </div>
-  <span>
-  <% cache do %>
-    <% book.genres.each do |genre| %>
 
-      <%= link_to genre.name, genre_path(genre), class: 'label label-primary' %>
-
-    <% end %>
-  <% end %>
-
-  </span>
+    <span>
+      <% cache do %>
+        <% book.genres.each do |genre| %>
+          <%= link_to genre.name, genre_path(genre), class: 'label label-primary' %>
+        <% end %>
+      <% end %>
+    </span>
+  </div>
 </li>
-<% end %>

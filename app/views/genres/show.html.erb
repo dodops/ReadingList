@@ -6,18 +6,4 @@
       <%= render partial: 'books/book', collection: @books %>
     </ul>
   </div>
-  <div class="col-sm-4">
-    <h2>Genres</h2>
-    <ul class="list-unstyled">
-      <% cache do %>
-        <% Genre.all.each do |genre| %>
-          <li>
-            <%= link_to genre.name, genre_path(genre),
-              class: 'label label-primary' %>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
-  </div>
 </div>
-
