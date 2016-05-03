@@ -49,16 +49,13 @@
       <hr>
 
       <div class="container">
-      <% flash.each do |name, msg| %>
-        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-          <%= msg %>
-        </div>
-      <% end %>
+        <% flash.each do |name, msg| %>
+          <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+            <%= msg %>
+          </div>
+        <% end %>
 
-
-    </div>
-
-      <%= yield %>
+        <%= yield %>
 
     </div>
 
