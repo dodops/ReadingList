@@ -23,7 +23,7 @@ RSpec.describe Book, type: :model do
 
   describe ".search" do
     it "should return books based on the params informed" do
-      expect(described_class.search("MYSTRIN")).to include(book)   
+      expect(described_class.search("MYSTRIN")).to include(book)
     end
   end
 
@@ -32,10 +32,10 @@ RSpec.describe Book, type: :model do
       expect(book.finished?).to be_falsey
     end
   end
-  
-  it { should validate_presence_of(:title) }
-  it { should validate_presence_of(:author) }
-  it { should validate_presence_of(:description) }
-  it { should have_many(:book_genres) }
-  it { should have_many(:genres).through(:book_genres) }
+
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:author) }
+  it { is_expected.to validate_presence_of(:description) }
+  it { is_expected.to have_many(:book_genres) }
+  it { is_expected.to have_many(:genres).through(:book_genres) }
 end

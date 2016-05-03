@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       delete 'unsubscribe'
     end
   end
-  get ':genre', to: 'books#index', as: :genre
+  get 'genres/:genre', to: 'genres#show', as: :genre
   root to: 'books#index'
 
 end
